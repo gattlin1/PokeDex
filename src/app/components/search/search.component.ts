@@ -10,18 +10,18 @@ export class SearchComponent implements OnInit {
   public pokemon: object;
 
   constructor(private pokemonService: PokemonService) {
-    this.pokemon = {};
+    this.pokemon = [];
   }
 
   ngOnInit(): void {
+    this.pokemonService.getAllPokemon().subscribe((data: any) => {
+      this.pokemon = data;
+      console.log(this.pokemon);
+    });
   }
 
   // TODO: Make a pokemon object to replace ordinary object
   public getPokemon(search: string): Array<object> {
-    search = '';
-    this.pokemonService.getPokemon(search).subscribe((data: any) => {
-      this.pokemon = data;
-    });
     return [];
   }
 

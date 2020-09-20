@@ -3,3 +3,9 @@
     <input #search type="text" placeholder="Search">
     <i (click)="getPokemon(search.value)">Submit</i>
 </div>
+<div id="pokemon">
+    <app-pokemon
+        *ngFor="let item of pokemon"
+        [info]=item>
+    </app-pokemon>
+</div>
