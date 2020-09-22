@@ -1,4 +1,9 @@
 <div class="pokemon">
-    <img src="{{info.image}}" alt="">
+    <div class="type-wrapper">
+        <img *ngFor="let type of info.types"
+            src="assets/icons/{{type}}.svg"
+            class="{{type}} type">
+    </div>
+        <img src="{{info.image}}" class="sprite">
     <div>{{info.name | titlecase}}</div>
 </div>

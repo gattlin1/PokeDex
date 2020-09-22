@@ -7,26 +7,25 @@ export class Pokemon {
 
     constructor(data?: any) {
         const defaults = {
-            moves: [],
-            types: [],
             ...data
         };
+
         this.name = defaults.name;
         this.id = defaults.id;
         this.image = defaults.sprites.front_default;
-        this.moves = defaults.moves;
-        this.types = defaults.types;
+        this.moves = [];
+        this.types = [];
 
         if (defaults.moves) {
-            defaults.moves.forEach(move => {
+            for (const move of defaults.moves) {
                 this.moves.push(move.move.name);
-            });
+            }
         }
 
         if (defaults.types) {
-            defaults.types.forEach(type => {
+            for (const type of defaults.types) {
                 this.types.push(type.type.name);
-            });
+            }
         }
 
     }
