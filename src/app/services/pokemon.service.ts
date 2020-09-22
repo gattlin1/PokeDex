@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Pokemon } from 'src/models/pokemon.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,14 @@ export class PokemonService {
   constructor(private http: HttpClient) {}
   private url = 'https://pokeapi.co/api/v2/pokemon';
 
-  // TODO: Make an actual pokemon object to replace generic object
-  public getAllPokemon(): Observable<object> {
-    const search = `${this.url}?limit=10`; // change to 807 later
+  // TODO: Sort them
+  public getAllPokemon(): Observable<Array<Pokemon>> {
+    const search = `${this.url}?limit=10`; // TODO: change to 807 later
     return this.http.get(search).pipe(map(
       (data: any) => {
-        const pokemonInfo: Array<object> = [];
+        const pokemonInfo: Array<Pokemon> = [];
         for (const item of data.results) {
-          this.getPokemon(item.name).subscribe((pokemon: any) => {
+          this.getPokemon(item.name).subscribe((pokemon: Pokemon) => {
             pokemonInfo.push(pokemon);
           });
         }
@@ -26,11 +27,11 @@ export class PokemonService {
     }));
   }
 
-  public getPokemon(name: string): Observable<object> {
+  public getPokemon(name: string): Observable<Pokemon> {
     const search = `${this.url}/${name}`;
     return this.http.get(search).pipe(map(
       (data: any) => {
-        return data;
+        return new Pokemon(data);
       }
     ));
   }

@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemonService.getAllPokemon().subscribe((data: any) => {
-      this.pokemon = data;
+      this.pokemon = data.sort((a, b) => a.id - b.id);
       console.log(this.pokemon);
     });
   }
