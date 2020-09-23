@@ -1,10 +1,8 @@
 .pokemon {
     display: grid;
     border: 2px solid rgb(114, 108, 108);
+    justify-items: center;
 
-    .sprite {
-        justify-items: center;
-    }
     .type-wrapper {
         display: inline;
         justify-content: end;

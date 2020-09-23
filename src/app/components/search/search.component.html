@@ -1,7 +1,9 @@
-<div id="search">
+<div class="heading">
+    <div id="search">
+        <input #search type="text" placeholder="Search">
+        <i (click)="getPokemon(search.value)">Submit</i>
+    </div>
     <div>PokeDex</div>
-    <input #search type="text" placeholder="Search">
-    <i (click)="getPokemon(search.value)">Submit</i>
 </div>
 <div id="pokemon">
     <app-pokemon
