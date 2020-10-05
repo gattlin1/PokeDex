@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SearchComponent } from './components/search/search.component';
-import { PokemonComponent } from './components/search/pokemon/pokemon.component';
+import { HeaderComponent } from './components/header/header.component';
+import { PokemonComponent } from './components/pokemon/pokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
+    HeaderComponent,
     PokemonComponent
   ],
   imports: [
