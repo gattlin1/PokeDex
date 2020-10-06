@@ -4,13 +4,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { PokemonComponent } from './components/pokemon/pokemon.component';
+import { PokemonComponent } from './components/pokemon-container/pokemon/pokemon.component';
+import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PokemonComponent
+    PokemonComponent,
+    PokemonContainerComponent
   ],
   imports: [
     BrowserModule,
