@@ -1,8 +1,11 @@
+@import '../../../../variable.scss';
+
 .pokemon {
     display: grid;
     border: 2px solid rgb(114, 108, 108);
     justify-items: center;
     border-radius: 5%;
+    background-color: $background-color;
 
     .type-wrapper {
         display: inline;

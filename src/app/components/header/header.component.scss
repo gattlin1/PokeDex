@@ -1,11 +1,13 @@
 @import '@fortawesome/fontawesome-free/css/all.css';
 
+@import '../../../variable.scss';
+
 .heading {
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
     position: fixed;
-    background-color: #FF0000;
+    background-color: $red;
     top: 0;
     width: 100%;
     padding-bottom: 10px;

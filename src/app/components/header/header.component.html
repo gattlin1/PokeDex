@@ -1,7 +1,7 @@
 <div class="heading">
     <span>PokeDex</span>
     <span id="search">
-        <input #search type="text" placeholder="Search">
+        <input (input)="onSearchChange($event.target.value)" type="text" placeholder="Search">
         <i class="fas fa-search"></i>
     </span>
 </div>
