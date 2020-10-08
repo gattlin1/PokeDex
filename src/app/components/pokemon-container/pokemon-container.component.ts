@@ -10,25 +10,19 @@ import { FilterService } from 'src/app/services/filter/filter.service';
 })
 export class PokemonContainerComponent implements OnInit {
   public pokemon: Array<Pokemon>;
-  public filteredPokemon: Array<Pokemon>;
   public filter: string;
 
   constructor(private pokemonService: PokemonService,
               private filterService: FilterService) {
     this.pokemon = [];
-    this.filteredPokemon = [];
   }
 
   ngOnInit(): void {
     this.pokemonService.getAllPokemon().subscribe((data: Array<Pokemon>) => {
       this.pokemon = data;
-      this.filteredPokemon = this.pokemon;
       console.log(this.pokemon);
     });
 
-    this.filterService.userTextObservable.subscribe(x => {
-      this.filter = x;
-      console.log(x);
-    });
+    this.filterService.userTextObservable.subscribe(x => this.filter = x);
   }
 }

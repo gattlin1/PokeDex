@@ -14,7 +14,7 @@ export class PokemonService {
 
   // TODO: Sort them
   public getAllPokemon(): Observable<Array<Pokemon>> {
-    const search = `${this.url}?limit=10`; // TODO: change to 807 later
+    const search = `${this.url}?limit=40`; // TODO: change to 807 later
     return this.http.get(search).pipe(map(
       (data: any) => {
         const pokemonInfo: Array<Pokemon> = [];

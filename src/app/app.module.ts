@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PokemonComponent } from './components/pokemon-container/pokemon/pokemon.component';
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component';
-import { FilterPipe } from './pipes/filter.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
+import { SortPipe } from './pipes/sort/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     HeaderComponent,
     PokemonComponent,
     PokemonContainerComponent,
-    FilterPipe
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
