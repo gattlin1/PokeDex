@@ -22,4 +22,8 @@ describe('SearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Search is empty at start', () => {
+    expect(component.search).toBe('');
+  });
 });

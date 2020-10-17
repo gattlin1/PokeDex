@@ -9,6 +9,7 @@ import { PokemonComponent } from './components/pokemon-container/pokemon/pokemon
 import { PokemonContainerComponent } from './components/pokemon-container/pokemon-container.component';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { SortPipe } from './pipes/sort/sort.pipe';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SortPipe } from './pipes/sort/sort.pipe';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
