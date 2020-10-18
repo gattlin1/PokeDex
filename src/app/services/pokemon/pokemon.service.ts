@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pokemon } from 'src/models/pokemon.model';
+import { PokemonDetailed } from 'src/models/pokemon-detailed.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,14 @@ export class PokemonService {
     return this.http.get(search).pipe(map(
       (data: any) => {
         return new Pokemon(data);
+      }
+    ));
+  }
+  public getPokemonDetailed(name: string): Observable<PokemonDetailed> {
+    const search = `${this.url}/${name}`;
+    return this.http.get(search).pipe(map(
+      (data: any) => {
+        return new PokemonDetailed(data);
       }
     ));
   }
