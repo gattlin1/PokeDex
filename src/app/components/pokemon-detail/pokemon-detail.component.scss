@@ -1,0 +1,23 @@
+@import '../../../variable.scss';
+
+.container {
+    color: $highlight;
+    padding-top: 40px;
+    display: grid;
+    grid-template-areas: "stats image info" 1fr 1fr 1fr;
+    justify-content: center;
+
+    #stats {
+        grid-area: stats;
+    }
+
+    img {
+        grid-area: image;
+        width: 300px;
+        height: 300px
+    }
+
+    #info {
+        grid-area: info;
+    }
+}
