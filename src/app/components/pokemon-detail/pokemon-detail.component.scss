@@ -2,17 +2,18 @@
 
 .container {
     color: $highlight;
-    padding-top: 40px;
     display: grid;
-    grid-template-areas: "stats image info" 1fr 1fr 1fr;
-    justify-content: center;
+    grid-template-areas: "stats image info";
 
     #stats {
         grid-area: stats;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
     }
 
     img {
         grid-area: image;
+        justify-self: center;
         width: 300px;
         height: 300px
     }

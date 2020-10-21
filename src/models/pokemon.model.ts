@@ -6,6 +6,12 @@ export class Pokemon {
 
     constructor(data?: any) {
         const defaults = {
+            name: '',
+            id: 0,
+            sprites: {
+                front_default: ''
+            },
+            types: [],
             ...data
         };
 
@@ -14,11 +20,8 @@ export class Pokemon {
         this.image = defaults.sprites.front_default;
         this.types = [];
 
-        if (defaults.types) {
-            for (const type of defaults.types) {
-                this.types.push(type.type.name);
-            }
-        }
-
+        defaults.types.map((type) => {
+            this.types.push(type.type.name);
+        });
     }
 }

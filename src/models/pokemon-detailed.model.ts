@@ -1,28 +1,26 @@
 import { Pokemon } from './pokemon.model';
+import { Stats } from './stats.model';
 
 export class PokemonDetailed extends Pokemon {
     height: number;
     weight: number;
-    health: number;
-    attack: number;
-    defense: number;
-    spAttack: number;
-    spDefense: number;
-    speed: number;
-    moves: Array<string>;
-    types: Array<string>;
+    stats: Stats;
+    moves: string[];
+    types: string[];
 
     constructor(data?: any) {
-        const hqImgUrl = 'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/';
         super(data);
 
         const defaults = {
+            height: 0,
+            weight: 0,
             ...data
         };
 
         this.height = defaults.height;
         this.weight = defaults.weight;
-        this.image = hqImgUrl + this.pad(this.id, 3) + '.png';
+        this.image = this.getImage(this.id);
+        this.stats = new Stats(defaults.stats);
         this.moves = [];
 
         if (defaults.moves) {
@@ -31,28 +29,11 @@ export class PokemonDetailed extends Pokemon {
             }
         }
 
-        for (const stat of defaults.stats) {
-            switch(stat.stat.name) {
-                case 'hp':
-                    this.health = stat.base_stat;
-                    break;
-                case 'attack':
-                    this.attack = stat.base_stat;
-                    break;
-                case 'defense':
-                    this.defense = stat.base_stat;
-                    break;
-                case 'special-attack':
-                    this.spAttack = stat.base_stat;
-                    break;
-                case 'special-defense':
-                    this.spDefense = stat.base_stat;
-                    break;
-                case 'speed':
-                    this.speed = stat.base_stat;
-                    break;
-            }
-        }
+    }
+
+    private getImage(id: number): string {
+        const hqImgUrl = 'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/';
+        return hqImgUrl + this.pad(this.id, 3) + '.png';
     }
 
     private pad(num: number, length: number): string {
@@ -61,5 +42,5 @@ export class PokemonDetailed extends Pokemon {
           str = '0' + str;
         }
         return str;
-      }
+    }
 }
