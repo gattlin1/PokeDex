@@ -1,11 +1,11 @@
-<div class="container">
+<div *ngIf="dataLoaded | async"class="container">
     <div id="stats">
         <div *ngFor="let stat of pokemon.stats | keyvalue">
-            <span>{{ stat.key|titlecase }}</span>
-            <span> {{ stat.value }}</span>
+            <span>{{stat.key|titlecase}}</span>
+            <span> {{stat.value}}</span>
         </div>
     </div>
-    <img *ngIf="pokemon.image" src="{{ pokemon.image }}">
+    <img src="{{pokemon.image}}">
     <div id="info">
 
     </div>

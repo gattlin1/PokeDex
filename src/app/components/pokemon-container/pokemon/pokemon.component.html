@@ -1,10 +1,14 @@
-<div class="pokemon" routerLink="/{{info.name}}">
-    <div class="type-wrapper">
-        <img *ngFor="let type of info.types"
-        src="assets/icons/{{type}}.svg"
-        class="{{type}} type">
+<article routerLink="/{{info.name}}">
+    <div>
+        <div class="type-wrapper">
+            <img *ngFor="let type of info.types"
+            src="assets/icons/{{type}}.svg"
+            class="{{type}} type">
+        </div>
+        <img src="{{info.image}}" class="sprite">
     </div>
-    <img src="{{info.image}}" class="sprite">
-    <div class="emphasized">{{info.id}}</div>
-    <div>{{info.name | titlecase}}</div>
-</div>
+    <div class="info-wrapper">
+        <h3>{{info.id}}</h3>
+        <span>{{info.name | titlecase}}</span>
+    </div>
+</article>

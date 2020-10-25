@@ -9,18 +9,24 @@ import { PokemonDetailed } from 'src/models/pokemon-detailed.model';
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss']
 })
-export class PokemonDetailComponent implements OnInit{
+export class PokemonDetailComponent implements OnInit, OnDestroy {
   pokemon: PokemonDetailed;
   pokemonSubscription: Subscription;
+  dataLoaded: Promise<boolean>;
 
   constructor(private route: ActivatedRoute,
-              private pokemonService: PokemonService) { }
+              private pokemonService: PokemonService) {}
 
   ngOnInit(): void {
     const name = this.route.snapshot.params.name;
-    this.pokemonService.getPokemonDetailed(name).subscribe((data) => {
+    this.pokemonSubscription = this.pokemonService.getPokemonDetailed(name).subscribe((data) => {
       this.pokemon = data;
+      this.dataLoaded = Promise.resolve(true);
       console.log(this.pokemon);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.pokemonSubscription.unsubscribe();
   }
 }

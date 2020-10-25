@@ -4,14 +4,15 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pokemon } from 'src/models/pokemon.model';
 import { PokemonDetailed } from 'src/models/pokemon-detailed.model';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
+  private url = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient) {}
-  private url = 'https://pokeapi.co/api/v2/pokemon';
 
   // TODO: Sort them
   public getAllPokemon(): Observable<Array<Pokemon>> {
