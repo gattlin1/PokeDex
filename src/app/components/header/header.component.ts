@@ -18,12 +18,5 @@ export class HeaderComponent implements OnInit {
   onSearchChange(value: string): void {
     this.search = value;
     this.filterService.onUserInput(this.search);
-    console.log(value);
-  }
-
-  set _search(value: string) {
-    this.search = value;
-    this.filterService.onUserInput(this.search);
-    console.log(value);
   }
 }

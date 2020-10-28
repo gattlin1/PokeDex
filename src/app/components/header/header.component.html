@@ -1,9 +1,13 @@
 <header>
     <h1>
         <img routerLink="/" src="../../../assets/logo/pokeball.png">
-        PokeDex</h1>
+        PokeDex
+    </h1>
     <span id="search">
-        <input (input)="onSearchChange($event.target.value)" type="text" placeholder="Search">
+        <input
+            (input)="onSearchChange($event.target.value)"
+            type="text"
+            placeholder="Search">
         <i class="fas fa-search"></i>
     </span>
 </header>

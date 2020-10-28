@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PokemonDetailComponent } from './pokemon-detail.component';
-import { FilterPipe } from 'src/app/pipes/filter/filter.pipe';
 
 describe('PokemonDetailComponent', () => {
   let component: PokemonDetailComponent;
@@ -12,7 +11,7 @@ describe('PokemonDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PokemonDetailComponent, FilterPipe ],
+      declarations: [ PokemonDetailComponent ],
       imports: [ RouterTestingModule, HttpClientTestingModule ]
     })
     .compileComponents();

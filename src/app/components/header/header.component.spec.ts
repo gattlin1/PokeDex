@@ -26,4 +26,15 @@ describe('SearchComponent', () => {
   it('Search is empty at start', () => {
     expect(component.search).toBe('');
   });
+
+  it('Search changes on input', () => {
+    // arrange
+    component.search = '';
+
+    // act
+    component.onSearchChange('Search');
+
+    // assert
+    expect(component.search).toBe('Search');
+  });
 });
