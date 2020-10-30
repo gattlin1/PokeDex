@@ -10,9 +10,9 @@ import { Pokemon } from 'src/models/pokemon.model';
   styleUrls: ['./pokemon-detail.component.scss']
 })
 export class PokemonDetailComponent implements OnInit, OnDestroy {
-  pokemon: Pokemon;
-  pokemonSubscription: Subscription;
-  dataLoaded: Promise<boolean>;
+  public pokemon: Pokemon;
+  public dataLoaded: Promise<boolean>;
+  private pokemonSubscription: Subscription;
 
   constructor(private route: ActivatedRoute,
               private pokemonService: PokemonService) {}
