@@ -1,6 +1,6 @@
 <div class="container">
     <app-pokemon
-        *ngFor="let pokemon of pokemon | filter: filter"
-        [info]="pokemon">
+        *ngFor="let aPokemon of pokemon | filter: filter | keyvalue"
+        [info]="aPokemon.value">
     </app-pokemon>
 </div>

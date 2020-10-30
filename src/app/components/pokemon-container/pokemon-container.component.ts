@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon/pokemon.service';
 import { Pokemon } from '../../../models/pokemon.model';
 import { FilterService } from 'src/app/services/filter/filter.service';
+import { PokemonContainer } from '../../../models/pokemon-container.model';
 
 @Component({
   selector: 'app-pokemon-container',
@@ -9,16 +10,14 @@ import { FilterService } from 'src/app/services/filter/filter.service';
   styleUrls: ['./pokemon-container.component.scss']
 })
 export class PokemonContainerComponent implements OnInit {
-  public pokemon: Array<Pokemon>;
+  public pokemon: PokemonContainer = {};
   public filter: string;
 
   constructor(private pokemonService: PokemonService,
-              private filterService: FilterService) {
-    this.pokemon = [];
-  }
+              private filterService: FilterService) {}
 
   ngOnInit(): void {
-    this.pokemonService.getAllPokemon().subscribe((data: Array<Pokemon>) => {
+    this.pokemonService.getAllPokemon().subscribe((data: PokemonContainer) => {
       this.pokemon = data;
       console.log(this.pokemon);
     });

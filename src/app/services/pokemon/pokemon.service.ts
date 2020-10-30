@@ -3,30 +3,30 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Pokemon } from 'src/models/pokemon.model';
-import { PokemonDetailed } from 'src/models/pokemon-detailed.model';
+import { PokemonContainer } from 'src/models/pokemon-container.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
-  private pokemonInfo: Pokemon[] = [];
-  private dataRetrieved: boolean = false;
+  private pokemonInfo: { [name: string]: Pokemon} = {};
+  private dataRetrieved = false;
   private url = 'https://pokeapi.co/api/v2/pokemon';
 
   constructor(private http: HttpClient) {}
 
   // TODO: Sort them
-  public getAllPokemon(): Observable<Pokemon[]> {
-    const search = `${this.url}?limit=20&offset=140`; // TODO: change to 807 later
+  public getAllPokemon(): Observable<PokemonContainer> {
     if (this.dataRetrieved) {
       return of(this.pokemonInfo);
     }
     else {
+      const search = `${this.url}?limit=20&offset=140`; // TODO: change to 807 later
       return this.http.get(search).pipe(map(
         (data: any) => {
           for (const item of data.results) {
             this.getPokemon(item.name).subscribe((pokemon: Pokemon) => {
-              this.pokemonInfo.push(pokemon);
+              this.pokemonInfo[pokemon.name] = pokemon;
             });
           }
           this.dataRetrieved = true;
@@ -36,20 +36,15 @@ export class PokemonService {
   }
 
   public getPokemon(name: string): Observable<Pokemon> {
-    const search = `${this.url}/${name}`;
-    return this.http.get(search).pipe(map(
-      (data: any) => {
-        return new Pokemon(data);
-      }
-    ));
-  }
-
-  public getPokemonDetailed(name: string): Observable<PokemonDetailed> {
-    const search = `${this.url}/${name}`;
-    return this.http.get(search).pipe(map(
-      (data: any) => {
-        return new PokemonDetailed(data);
-      }
-    ));
+    if (this.pokemonInfo[name]) {
+      return of(this.pokemonInfo[name]);
+    } else {
+      const search = `${this.url}/${name}`;
+      return this.http.get(search).pipe(map(
+        (data: any) => {
+          return new Pokemon(data);
+        }
+      ));
+    }
   }
 }
