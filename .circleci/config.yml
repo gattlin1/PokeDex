@@ -1,33 +1,11 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/PokeDex
     docker:
-      - image: circleci/node:14-browsers
+      - image:  circleci/node:14
+       environment:
+          CHROME_BIN: /usr/bin/google-chrome
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: install-dependencies
-          command: yarn install
-      - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ./node_modules
-      - run:
-          name: angular-build
-          command: npm build --no-progress
-      - run:
-          name: angular-test
-          command: npm test -- --single-run --no-progress
-      - store_artifacts:
-          path: test-results.xml
-          prefix: tests
-      - run:
-          name: angular-lint
-          command: npm lint -- --formatters-dir ./tslint-formatters --format junit -o tslint.xml
-      - store_artifacts:
-          path: tslint.xml
-          prefix: lint
+      - run: npm install
+      - run: npm test
