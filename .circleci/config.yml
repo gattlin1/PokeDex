@@ -18,7 +18,7 @@ jobs:
             - ./node_modules
       - run:
           name: angular-build
-          command: npm ng -- build --prod --aot --no-progress
+          command: npm build --no-progress
       - run:
           name: angular-test
           command: npm test -- --single-run --no-progress
