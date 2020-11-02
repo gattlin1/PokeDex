@@ -30,10 +30,10 @@ module.exports = function (config) {
     restartOnFileChange: true,
     browsers: ['Chrome'],
     customLaunchers: {
-      ChromeNoSandbox: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
+        ChromeHeadlessCI: {
+            base: 'ChromeHeadless',
+            flags: ['--no-sandbox']
+        }
     },
   });
 };
