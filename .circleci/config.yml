@@ -4,7 +4,6 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      working_directory: ~/PokeDex
       docker:
         - image: circleci/node:10-browsers
       steps:
