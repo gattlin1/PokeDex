@@ -8,8 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: cimg/node:14.4.0-browsers
-      environment:
-        CHROME_BIN: /usr/bin/google-chrome
+        environment:
+          CHROME_BIN: /usr/bin/google-chrome
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
