@@ -7,7 +7,7 @@ jobs:
   build-job:
     docker:
       # specify the version you desire here
-      - image: circleci/node
+      - image: cimg/node:14.4.0-browsers
       environment:
         CHROME_BIN: /usr/bin/google-chrome
 
@@ -39,7 +39,7 @@ jobs:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
 
       # run tests!
-      - run: npm run test
+      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
   deploy-job:
        docker:
