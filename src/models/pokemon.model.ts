@@ -10,6 +10,7 @@ export class Pokemon {
     weight: number;
     stats: Stats;
     moves: string[];
+    info: any;
 
     constructor(data?: any) {
         const defaults = {
@@ -24,13 +25,16 @@ export class Pokemon {
             ...data
         };
 
-        this.name = defaults.name;
-        this.id = defaults.id;
+        this.info = {
+            name: defaults.name,
+            id: defaults.id,
+            height: defaults.height,
+            weight: defaults.weight,
+            types: [],
+        };
+
         this.sprite = defaults.sprites.front_default;
-        this.types = [];
-        this.height = defaults.height;
-        this.weight = defaults.weight;
-        this.image = this.getImage(this.id);
+        this.image = this.getImage(this.info.id);
         this.stats = new Stats(defaults.stats);
         this.moves = [];
 
@@ -40,13 +44,13 @@ export class Pokemon {
             }
         }
         defaults.types.map((type) => {
-            this.types.push(type.type.name);
+            this.info.types.push(type.type.name);
         });
     }
 
     private getImage(id: number): string {
         const hqImgUrl = 'https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/';
-        return hqImgUrl + this.pad(this.id, 3) + '.png';
+        return hqImgUrl + this.pad(id, 3) + '.png';
     }
 
     private pad(num: number, length: number): string {

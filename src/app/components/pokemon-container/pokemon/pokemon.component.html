@@ -1,14 +1,15 @@
-<article routerLink="/{{info.name}}">
+<article routerLink="/{{info.info.name}}">
     <div>
         <div class="type-wrapper">
-            <img *ngFor="let type of info.types"
-            src="assets/icons/{{type}}.svg"
-            class="{{type}} type">
+            <app-type
+                *ngFor="let type of info.info.types"
+                [type]="type">
+            </app-type>
         </div>
         <img src="{{info.sprite}}" class="sprite">
     </div>
     <div class="info-wrapper">
-        <h3>{{info.id}}</h3>
-        <span>{{info.name | titlecase}}</span>
+        <h3>{{info.info.id}}</h3>
+        <span>{{info.info.name | titlecase}}</span>
     </div>
 </article>

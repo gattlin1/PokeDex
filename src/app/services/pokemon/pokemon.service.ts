@@ -9,7 +9,7 @@ import { PokemonContainer } from 'src/models/pokemon-container.model';
   providedIn: 'root'
 })
 export class PokemonService {
-  private pokemonInfo: { [name: string]: Pokemon} = {};
+  private pokemonInfo: { [name: string]: Pokemon } = {};
   private dataRetrieved = false;
   private url = 'https://pokeapi.co/api/v2/pokemon';
 
@@ -26,7 +26,7 @@ export class PokemonService {
         (data: any) => {
           for (const item of data.results) {
             this.getPokemon(item.name).subscribe((pokemon: Pokemon) => {
-              this.pokemonInfo[pokemon.name] = pokemon;
+              this.pokemonInfo[pokemon.info.name] = pokemon;
             });
           }
           this.dataRetrieved = true;

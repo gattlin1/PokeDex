@@ -7,8 +7,6 @@
 
     #stats {
         grid-area: stats;
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
     }
 
     img {
@@ -20,6 +18,27 @@
 
     #info {
         grid-area: info;
+    }
+
+    .table {
+        background-color: $tertiary-background;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1fr);
+        padding: 5px;
+        text-align: center;
+        color: white;
+
+        div {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            grid-template-rows: 1fr;
+            background-color: $secondary-background;
+        }
+
+        span {
+            padding-top: 10px;
+        }
     }
 }
 
