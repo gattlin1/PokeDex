@@ -26,7 +26,7 @@ export class PokemonService {
         (data: any) => {
           for (const item of data.results) {
             this.getPokemon(item.name).subscribe((pokemon: Pokemon) => {
-              this.pokemonInfo[pokemon.info.name] = pokemon;
+              this.pokemonInfo[pokemon.name] = pokemon;
             });
           }
           this.dataRetrieved = true;

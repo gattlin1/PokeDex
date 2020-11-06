@@ -1,9 +1,16 @@
 @import '../../../variable.scss';
 
+.details {
+    background-color: $tertiary-background;
+    padding: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
 .container {
-    color: $highlight;
+    color: white;
     display: grid;
     grid-template-areas: "stats image info";
+    background-color: $secondary-background;
 
     #stats {
         grid-area: stats;
@@ -21,24 +28,29 @@
     }
 
     .table {
-        background-color: $tertiary-background;
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(1fr);
-        padding: 5px;
+        grid-template-columns: repeat(1, minmax(1fr, 150px));
         text-align: center;
-        color: white;
+        padding: 5px;
 
         div {
             display: grid;
-            grid-template-columns: 100px 1fr;
+            grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr;
-            background-color: $secondary-background;
+
+            span {
+                padding-top: 10px;
+
+                &:nth-child(2) {
+                    text-align: left;
+                }
+            }
+
+            app-type {
+                padding-right: 3px;
+            }
         }
 
-        span {
-            padding-top: 10px;
-        }
     }
 }
 

@@ -1,18 +1,43 @@
 <div>
     <i class="fas fa-arrow-left" routerLink="/"></i>
 </div>
-<div *ngIf="dataLoaded | async" class="container">
-    <div id="stats" class="table">
-        <div *ngFor="let stat of pokemon.stats | keyvalue">
-            <span class="header">{{stat.key|titlecase}}</span>
-            <span> {{stat.value}}</span>
+<div *ngIf="dataLoaded | async" class="details">
+    <div class="container">
+        <div id="stats" class="table">
+            <div *ngFor="let stat of pokemon.stats | keyvalue">
+                <span class="header">{{stat.key | titlecase}}</span>
+                <span> {{stat.value}}</span>
+            </div>
         </div>
-    </div>
-    <img src="{{pokemon.image}}">
-    <div id="info" class="table">
-       <div *ngFor="let info of pokemon.info | keyvalue">
-            <span class="header">{{info.key|titlecase}}</span>
-            <span> {{info.value}}</span>
+        <img src="{{pokemon.image}}">
+        <div id="info" class="table">
+            <div>
+                <span>Id</span>
+                <span>#{{pokemon.id}}</span>
+            </div>
+            <div>
+                <span>Name</span>
+                <span>{{pokemon.name | titlecase}}</span>
+            </div>
+            <div>
+                <span>Height</span>
+                <span>{{pokemon.height}} m</span>
+            </div>
+            <div>
+                <span>Weight</span>
+                <span>{{pokemon.weight}} kg</span>
+            </div>
+            <div>
+                <span *ngIf="pokemon.types.length === 1">Type</span>
+                <span *ngIf="pokemon.types.length > 1">Types</span>
+                <span>
+                    <app-type
+                        *ngFor="let type of pokemon.types"
+                        [type]=type>
+                    </app-type>
+                </span>
+            </div>
+
         </div>
-    </div>
+    <div>
 </div>

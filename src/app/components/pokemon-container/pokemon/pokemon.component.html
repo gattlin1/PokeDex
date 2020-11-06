@@ -1,15 +1,15 @@
-<article routerLink="/{{info.info.name}}">
+<article routerLink="/{{info.name}}">
     <div>
         <div class="type-wrapper">
             <app-type
-                *ngFor="let type of info.info.types"
+                *ngFor="let type of info.types"
                 [type]="type">
             </app-type>
         </div>
         <img src="{{info.sprite}}" class="sprite">
     </div>
     <div class="info-wrapper">
-        <h3>{{info.info.id}}</h3>
-        <span>{{info.info.name | titlecase}}</span>
+        <h3>{{info.id}}</h3>
+        <span>{{info.name | titlecase}}</span>
     </div>
 </article>

@@ -25,18 +25,15 @@ export class Pokemon {
             ...data
         };
 
-        this.info = {
-            name: defaults.name,
-            id: defaults.id,
-            height: defaults.height,
-            weight: defaults.weight,
-            types: [],
-        };
-
+        this.name = defaults.name;
+        this.id = defaults.id;
+        this.weight = defaults.weight / 10;
+        this.height = defaults.height / 10;
         this.sprite = defaults.sprites.front_default;
-        this.image = this.getImage(this.info.id);
+        this.image = this.getImage(this.id);
         this.stats = new Stats(defaults.stats);
         this.moves = [];
+        this.types = [];
 
         if (defaults.moves) {
             for (const move of defaults.moves) {
@@ -44,7 +41,7 @@ export class Pokemon {
             }
         }
         defaults.types.map((type) => {
-            this.info.types.push(type.type.name);
+            this.types.push(type.type.name);
         });
     }
 
