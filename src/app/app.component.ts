@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TitleService } from './services/title/title.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'PokeDex';
+  title = 'Pokédex';
+  constructor(private titleService: TitleService) {
+    titleService.init();
+  }
 }

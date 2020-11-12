@@ -15,18 +15,16 @@ export class PokemonService {
 
   constructor(private http: HttpClient) {}
 
-  // TODO: Sort them
   public getAllPokemon(): Observable<PokemonContainer> {
     if (this.dataRetrieved) {
       return of(this.pokemonInfo);
-    }
-    else {
+    } else {
       const search = `${this.url}?limit=20&offset=140`; // TODO: change to 807 later
       return this.http.get(search).pipe(map(
         (data: any) => {
           for (const item of data.results) {
             this.getPokemon(item.name).subscribe((pokemon: Pokemon) => {
-              this.pokemonInfo[pokemon.name] = pokemon;
+              this.pokemonInfo[pokemon.id] = pokemon;
             });
           }
           this.dataRetrieved = true;

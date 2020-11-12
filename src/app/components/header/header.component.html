@@ -1,9 +1,9 @@
 <header>
     <h1>
         <img routerLink="/" src="../../../assets/logo/pokeball.png">
-        PokeDex
+        PokéDex
     </h1>
-    <span id="search">
+    <span id="search" [class.hidden]='!homepage'>
         <input
             (input)="onSearchChange($event.target.value)"
             type="text"
