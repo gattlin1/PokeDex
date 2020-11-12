@@ -7,11 +7,7 @@ import { TitleService } from './title.service';
 describe('TitleService', () => {
   let service: TitleService;
   let router: Router;
-  const navigationEnd: NavigationEnd = {
-      id: 0,
-      url: '/',
-      urlAfterRedirects: '/'
-  };
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -28,6 +24,11 @@ describe('TitleService', () => {
   it('sets the homepage title', () => {
     // arrange
     // url is already set to homepage
+    const navigationEnd: NavigationEnd = {
+      id: 0,
+      url: '/',
+      urlAfterRedirects: '/'
+    };
 
     // act
     service.setTitle(navigationEnd);
@@ -39,7 +40,11 @@ describe('TitleService', () => {
 
   it('sets the pokemon detail title', () => {
     // arrange
-    navigationEnd.url = 'bulbasaur';
+    const navigationEnd: NavigationEnd = {
+      id: 0,
+      url: '/bulbasaur',
+      urlAfterRedirects: '/bulbasaur'
+    };
 
     // act
     service.setTitle(navigationEnd);
