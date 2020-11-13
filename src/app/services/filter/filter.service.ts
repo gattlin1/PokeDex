@@ -5,13 +5,11 @@ import { BehaviorSubject } from '../../../../node_modules/rxjs';
   providedIn: 'root'
 })
 export class FilterService {
-  private userTextSubject = new BehaviorSubject(null);
-  userTextObservable = this.userTextSubject.asObservable();
+  private userTextSubject = new BehaviorSubject('');
+  public userTextObservable = this.userTextSubject.asObservable();
 
 
   public onUserInput(userText: string): void {
     this.userTextSubject.next(userText);
   }
-
-  constructor() { }
 }

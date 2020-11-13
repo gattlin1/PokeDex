@@ -8,7 +8,6 @@ describe('TitleService', () => {
   let service: TitleService;
   let router: Router;
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule]
@@ -21,9 +20,13 @@ describe('TitleService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('gets the title', () => {
+    // assert
+    expect(service.getTitle()).toBe('PokéDex');
+  })
+
   it('sets the homepage title', () => {
     // arrange
-    // url is already set to homepage
     const navigationEnd: NavigationEnd = {
       id: 0,
       url: '/',
@@ -34,7 +37,7 @@ describe('TitleService', () => {
     service.setTitle(navigationEnd);
 
     // assert
-    expect(service.getTitle()).toBe('Pokédex');
+    expect(service.getTitle()).toBe('PokéDex');
 
   });
 
@@ -50,6 +53,6 @@ describe('TitleService', () => {
     service.setTitle(navigationEnd);
 
     // assert
-    expect(service.getTitle()).toBe('Pokédex | Bulbasaur');
-  })
+    expect(service.getTitle()).toBe('PokéDex | Bulbasaur');
+  });
 });

@@ -7,7 +7,7 @@ import { filter } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TitleService {
-  private mainTitle = 'Pokédex';
+  private mainTitle = 'PokéDex';
 
   constructor(private titleService: Title, private router: Router) {}
 
