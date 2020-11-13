@@ -12,7 +12,6 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 import { SortPipe } from './pipes/sort/sort.pipe';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 import { TypeComponent } from './components/type/type.component';
-import { StatsComponent } from './components/stats/stats.component';
 
 const appRoutes: Routes = [
   {path: '', component: PokemonContainerComponent},
@@ -29,7 +28,6 @@ const appRoutes: Routes = [
     SortPipe,
     PokemonDetailComponent,
     TypeComponent,
-    StatsComponent
   ],
   imports: [
     BrowserModule,
